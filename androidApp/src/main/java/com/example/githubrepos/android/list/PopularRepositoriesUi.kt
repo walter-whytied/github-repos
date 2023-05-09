@@ -33,6 +33,7 @@ import com.example.githubrepos.android.composeables.ErrorUi
 import com.example.githubrepos.android.composeables.LoadingUi
 import com.example.githubrepos.model.GithubRepository
 import com.example.githubrepos.presentation.FavoriteStatus
+import com.example.githubrepos.presentation.repodetails.GithubRepoDetailStateMachine
 import com.example.githubrepos.presentation.repodetails.RepoIdSetter
 import com.example.githubrepos.presentation.repolist.GithubRepoListStateMachine
 import com.example.githubrepos.presentation.repolist.LoadFirstPagePaginationState
@@ -62,13 +63,17 @@ typealias PopularRepositoriesUi = @Composable (
 @Composable
 fun PopularRepositoriesUi(
     @Assisted openRepoDetails: (repoId: String) -> Unit,
-    stateMachine: GithubRepoListStateMachine,
+    idCreator: (String) -> GithubRepoDetailStateMachine,
+    stateMachine: GithubRepoListStateMachine
 ) {
     val (state, dispatch) = stateMachine.rememberStateAndDispatch()
 
     PopularRepositoriesScreen(
         state = state.value,
-        openRepoDetails = openRepoDetails,
+        openRepoDetails = {
+            openRepoDetails(it)
+            idCreator(it)
+        },
         dispatch = dispatch
     )
 
