@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Github List</string>
+    <string name="unexpected_error">An unexpected Error has occurred</string>
+    <string name="unexpected_error_retry">An unexpected Error has occurred.\nClick here to retry</string>
+
+
+    <string name="popular_title">Popular</string>
+    <string name="favorite_title">Favorite</string>
+    <string name="cd_popular">Popular repositories</string>
+    <string name="cd_favorite">Favorite repositories</string>
+</resources>
