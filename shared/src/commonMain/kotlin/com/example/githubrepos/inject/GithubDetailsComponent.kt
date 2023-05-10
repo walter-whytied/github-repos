@@ -12,8 +12,5 @@ abstract class GithubDetailsComponent {
     abstract val repoId: (String) -> GithubRepoDetailStateMachine
 
     @Provides
-    fun githubIdSetter(bind: RepoIdSetterImpl) : RepoIdSetter = bind
-
-    @Provides
-    fun provideString(): String = "01"
+    fun provideRepoIdSetter(bind: RepoIdSetterImpl) : RepoIdSetter = bind
 }
