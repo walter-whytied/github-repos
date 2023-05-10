@@ -33,10 +33,10 @@ typealias RepoDetails = @Composable (
 @Composable
 fun RepoDetails(
     @Assisted navigateUp: () -> Unit,
-    stateMachine: GithubRepoDetailStateMachine
+    stateMachine: (String) -> GithubRepoDetailStateMachine
 ) {
 
-    val (state, dispatch) = stateMachine.rememberStateAndDispatch()
+    val (state, dispatch) = stateMachine("id").rememberStateAndDispatch()
 
     RepoDetails(
         state = state.value,
